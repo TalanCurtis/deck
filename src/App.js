@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './reset.css';
-import './App.css';
+import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
 
