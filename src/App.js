@@ -9,13 +9,10 @@ class App extends Component {
     this.state={
       deckId:'',
       spades:[],
-      spadesQueen:false,
       hearts:[],
-      heartsQueen:false,
       clubs:[],
-      clubsQueen:false,
       diamonds:[],
-      diamondsQueen:false
+      queensFound:0
     }
   }
   componentDidMount(){
@@ -30,33 +27,33 @@ class App extends Component {
   drawTwo(){
     axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=2`).then(res=>{
       // Destructure this.state 
-      const {clubs, clubsQueen, spades, spadesQueen, hearts, heartsQueen, diamonds, diamondsQueen} = this.state
+      let {clubs,  spades,  hearts, diamonds, queensFound} = this.state
       for (let i in res.data.cards){
         switch (res.data.cards[i].suit) {
           case "CLUBS": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({clubs: [...clubs, res.data.cards[i]], clubsQueen:true})
+            this.setState({clubs: [...clubs, res.data.cards[i]], queensFound: queensFound +=1 })
           }else{
             this.setState({clubs: [...clubs, res.data.cards[i]]})
           }
             break;
           case "DIAMONDS": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({diamonds: [...diamonds, res.data.cards[i]], diamondsQueen:true})
+            this.setState({diamonds: [...diamonds, res.data.cards[i]], queensFound: queensFound +=1 })
           }else{
             this.setState({diamonds: [...diamonds, res.data.cards[i]]})
           }
             break;
           case "SPADES": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({spades: [...spades, res.data.cards[i]], spadesQueen:true})
+            this.setState({spades: [...spades, res.data.cards[i]], queensFound: queensFound +=1 })
           }else{
             this.setState({spades: [...spades, res.data.cards[i]]})
           }
             break;
           case "HEARTS":
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({hearts: [...hearts, res.data.cards[i]], heartsQueen:true})
+            this.setState({hearts: [...hearts, res.data.cards[i]], queensFound: queensFound +=1 })
           }else{
             this.setState({hearts: [...hearts, res.data.cards[i]]})
           }
@@ -65,29 +62,12 @@ class App extends Component {
             break;
         }
       }
-
-      if(clubsQueen && spadesQueen && diamondsQueen && heartsQueen){
-        console.log('true')
-      }else{
-        console.log('false')
-      }
+      console.log(queensFound)
     })
   }
 
   start(){
     console.log('start')
-    const {clubsQueen, spadesQueen,heartsQueen, diamondsQueen} = this.state
-    
-    var result = "";
-    var i = 0;
-    
-    do {
-      i = i + 1;
-      result = result + i;
-      console.log(result)
-    } while (i < 5);
-
-
   }
 
 
