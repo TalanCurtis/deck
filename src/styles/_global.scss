@@ -1,10 +1,32 @@
 body {
-    background-color: #8d8d8dda;
+    background-color: #186600;
     background-attachment: fixed;
     font-size: 14px;
 }
 
 .App {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+.table{
+    width: 900px;
+    height: 500px;
+    background-color: #367423;
+    // background-image: url('/images/felt.jpg');
+    border-radius: 10px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .controls{
+        // background-color: pink;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            height: 220px;
+        }
+    }
 }

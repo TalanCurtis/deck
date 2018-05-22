@@ -108,24 +108,31 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button onClick={()=>this.start()}>start</button>
-        <button onClick={()=>this.reset()}>reset</button>
-        <button onClick={()=>this.drawTwo()}>drawtwo</button>
-        <div>
-          hearts
-        {hearts}
-        </div>
-        <div>
-          clubs
-        {clubs}
-        </div>
-        <div>
-          diamonds
-        {diamonds}
-        </div>
-        <div>
-          spades
-        {spades}
+        <div className='table'>
+          <div className='controls'>
+            <div className='buttons'>
+              <button onClick={()=>this.start()}>start</button>
+              <button onClick={()=>this.reset()}>reset</button>
+            </div>
+            <button onClick={()=>this.drawTwo()}>drawtwo</button>
+            <img src='/images/CardBack.png' alt='deck'/>
+          </div>
+          <div>
+            hearts
+          {hearts}
+          </div>
+          <div>
+            clubs
+          {clubs}
+          </div>
+          <div>
+            diamonds
+          {diamonds}
+          </div>
+          <div>
+            spades
+          {spades}
+          </div>
         </div>
       </div>
     );
