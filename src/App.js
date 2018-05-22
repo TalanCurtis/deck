@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
 import axios from 'axios';
+import Card from './components/Card/Card';
 
 class App extends Component {
   constructor(){
@@ -27,6 +28,7 @@ class App extends Component {
       // Destructure this.state 
       let {clubs,  spades,  hearts, diamonds, queensFound} = this.state
       for (let i in res.data.cards){
+        console.log(res.data.cards)
         // for each card drawn check the suit and if its a queen, sort into corresponding list and increment queensFound.
         switch (res.data.cards[i].suit) {
           case "CLUBS": 
@@ -93,30 +95,23 @@ class App extends Component {
 
   render() {
     let hearts = this.state.hearts.map((x,i)=>(
-      <div key={i}>
-        {x.value}
-      </div>
+      <Card key={i} image={x.image}/>
     ))
     let clubs = this.state.clubs.map((x,i)=>(
-      <div key={i}>
-        {x.value}
-      </div>
+      <Card key={i} image={x.image}/>
     ))
     let diamonds = this.state.diamonds.map((x,i)=>(
-      <div key={i}>
-        {x.value}
-      </div>
+      <Card key={i} image={x.image}/>
     ))
     let spades = this.state.spades.map((x,i)=>(
-      <div key={i}>
-        {x.value}
-      </div>
+      <Card key={i} image={x.image}/>
     ))
 
     return (
       <div className="App">
         <button onClick={()=>this.start()}>start</button>
         <button onClick={()=>this.reset()}>reset</button>
+        <button onClick={()=>this.drawTwo()}>drawtwo</button>
         <div>
           hearts
         {hearts}
