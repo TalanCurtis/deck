@@ -16,19 +16,18 @@ class App extends Component {
     }
   }
   componentDidMount(){
+    // On mount get deck id.
     axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(res=>{
-      console.log(res.data)
       this.setState({deckId:res.data.deck_id})
     })
   }
-
-
 
   drawTwo(){
     axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=2`).then(res=>{
       // Destructure this.state 
       let {clubs,  spades,  hearts, diamonds, queensFound} = this.state
       for (let i in res.data.cards){
+        // for each card drawn check the suit and if its a queen, sort into corresponding list and increment queensFound.
         switch (res.data.cards[i].suit) {
           case "CLUBS": 
           if(res.data.cards[i].value === "QUEEN"){
@@ -62,12 +61,32 @@ class App extends Component {
             break;
         }
       }
-      console.log(queensFound)
     })
   }
 
   start(){
-    console.log('start')
+    // Use recursion to keep drawing cards until all queens are found.
+    setTimeout(() => {
+      if(this.state.queensFound<4){
+        console.log('draw again')
+        this.drawTwo();
+        return this.start();
+      }else{
+        console.log('Done')
+      }
+    }, 1000);
+  }
+
+  reset(){
+    axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/shuffle/`);
+    this.setState(
+      {
+        spades:[],
+        hearts:[],
+        clubs:[],
+        diamonds:[],
+        queensFound:0
+      });
   }
 
 
@@ -96,8 +115,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button onClick={()=>this.drawTwo()}>Draw 2</button>
         <button onClick={()=>this.start()}>start</button>
+        <button onClick={()=>this.reset()}>reset</button>
         <div>
           hearts
         {hearts}
