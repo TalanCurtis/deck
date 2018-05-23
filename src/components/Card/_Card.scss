@@ -1,6 +1,12 @@
 .Card{
     position: absolute;
-    transition: transform 500ms ease-out, opacity 500ms ease-in;;
+    transition: transform 500ms ease-out, opacity 500ms ease-in;
+    .highlight{
+        height: 200px;
+        backface-visibility: hidden; 
+        border: 5px solid rgb(21, 255, 0);
+        border-radius: 10px;
+    }
     img{
         height: 200px;
         backface-visibility: hidden; 

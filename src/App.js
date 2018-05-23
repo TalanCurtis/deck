@@ -101,7 +101,7 @@ class App extends Component {
                 key={i}
                 timeout={500}
                 classNames="fade">
-       <Card image={x.image}/>
+       <Card image={x.image} value={x.value}/>
        </CSSTransition>
        
     ))
@@ -110,7 +110,7 @@ class App extends Component {
                 key={i}
                 timeout={500}
                 classNames="fade">
-       <Card image={x.image}/>
+       <Card image={x.image} value={x.value}/>
        </CSSTransition>
     ))
     let diamonds = this.state.diamonds.map((x,i)=>(
@@ -118,7 +118,7 @@ class App extends Component {
                 key={i}
                 timeout={500}
                 classNames="fade">
-       <Card image={x.image}/>
+       <Card image={x.image} value={x.value}/>
        </CSSTransition>
     ))
     let spades = this.state.spades.map((x,i)=>(
@@ -126,7 +126,7 @@ class App extends Component {
                 key={i}
                 timeout={500}
                 classNames="fade">
-       <Card image={x.image}/>
+       <Card image={x.image} value={x.value}/>
        </CSSTransition>
     ))
 
