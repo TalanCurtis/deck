@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 class App extends Component {
   constructor(){
@@ -21,6 +22,8 @@ class App extends Component {
       this.setState({deckId:res.data.deck_id})
     })
   }
+
+
 
   drawTwo(){
     axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=2`).then(res=>{
@@ -94,16 +97,37 @@ class App extends Component {
 
   render() {
     let hearts = this.state.hearts.map((x,i)=>(
-      <Card key={i} image={x.image}/>
+      <CSSTransition               
+                key={i}
+                timeout={500}
+                classNames="fade">
+       <Card image={x.image}/>
+       </CSSTransition>
+       
     ))
     let clubs = this.state.clubs.map((x,i)=>(
-      <Card key={i} image={x.image}/>
+      <CSSTransition               
+                key={i}
+                timeout={500}
+                classNames="fade">
+       <Card image={x.image}/>
+       </CSSTransition>
     ))
     let diamonds = this.state.diamonds.map((x,i)=>(
-      <Card key={i} image={x.image}/>
+      <CSSTransition               
+                key={i}
+                timeout={500}
+                classNames="fade">
+       <Card image={x.image}/>
+       </CSSTransition>
     ))
     let spades = this.state.spades.map((x,i)=>(
-      <Card key={i} image={x.image}/>
+      <CSSTransition               
+                key={i}
+                timeout={500}
+                classNames="fade">
+       <Card image={x.image}/>
+       </CSSTransition>
     ))
 
     return (
@@ -115,23 +139,31 @@ class App extends Component {
               <button onClick={()=>this.reset()}>reset</button>
             </div>
             <button onClick={()=>this.drawTwo()}>drawtwo</button>
-            <img src='/images/CardBack.png' alt='deck'/>
+            <img className='deck' src='/images/CardBack.png' alt='deck'/>
           </div>
           <div>
-            hearts
-          {hearts}
+            <h2 className='red'>Hearts</h2>
+            <TransitionGroup className='card-container'>
+              {hearts}
+            </TransitionGroup>
           </div>
           <div>
-            clubs
-          {clubs}
+            <h2>Clubs</h2>
+            <TransitionGroup className='card-container'>
+              {clubs}
+            </TransitionGroup>
           </div>
           <div>
-            diamonds
-          {diamonds}
+            <h2 className='red'>Diamonds</h2>
+            <TransitionGroup className='card-container'>
+              {diamonds}
+            </TransitionGroup>
           </div>
           <div>
-            spades
-          {spades}
+            <h2>Spades</h2>
+            <TransitionGroup className='card-container'>
+              {spades}
+            </TransitionGroup>
           </div>
         </div>
       </div>

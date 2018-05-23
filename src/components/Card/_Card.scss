@@ -1,5 +1,7 @@
 .Card{
+    position: absolute;
     img{
         height: 200px;
+        backface-visibility: hidden; 
     }
 }
