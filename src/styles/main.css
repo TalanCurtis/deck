@@ -67,54 +67,71 @@ body {
   text-align: center;
   padding: 10px;
   box-shadow: inset 0px 0px 10px #220101; }
-  .table .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    .table .controls .logo {
-      background-image: linear-gradient(to left, #c72200 0%, #ea2803 20%, #ea2803 20%, #ff6600 26%, #ea2803 34%, #ea2803 34%, #ea2803 58%, #ff6600 73%, #c72200 100%);
-      mask-image: url("/images/Logo.svg");
-      height: 200px;
-      width: 200px;
-      animation-name: scroll;
-      animation-timing-function: linear;
-      animation-duration: 5s;
-      animation-iteration-count: infinite; }
-    .table .controls img {
-      height: 220px;
-      margin-bottom: 10px; }
-  .table div .card-container {
-    background-color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    .table div .card-container div:nth-child(1) {
-      top: --10px; }
-    .table div .card-container div:nth-child(2) {
-      top: --40px; }
-    .table div .card-container div:nth-child(3) {
-      top: --70px; }
-    .table div .card-container div:nth-child(4) {
-      top: --100px; }
-    .table div .card-container div:nth-child(5) {
-      top: --130px; }
-    .table div .card-container div:nth-child(6) {
-      top: --160px; }
-    .table div .card-container div:nth-child(7) {
-      top: --190px; }
-    .table div .card-container div:nth-child(8) {
-      top: --220px; }
-    .table div .card-container div:nth-child(9) {
-      top: --250px; }
-    .table div .card-container div:nth-child(10) {
-      top: --280px; }
-    .table div .card-container div:nth-child(11) {
-      top: --310px; }
-    .table div .card-container div:nth-child(12) {
-      top: --340px; }
-    .table div .card-container div:nth-child(13) {
-      top: --370px; }
+
+.table .controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.table .controls .logo {
+  background-image: linear-gradient(to left, #c72200 0%, #ea2803 20%, #ea2803 20%, #ff6600 26%, #ea2803 34%, #ea2803 34%, #ea2803 58%, #ff6600 73%, #c72200 100%);
+  mask-image: url("/images/Logo.svg");
+  height: 200px;
+  width: 200px;
+  animation-name: scroll;
+  animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-iteration-count: infinite; }
+
+.table .controls img {
+  height: 220px;
+  margin-bottom: 10px; }
+
+.table div .card-container {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.table div .card-container div:nth-child(1) {
+  top: 10px; }
+
+.table div .card-container div:nth-child(2) {
+  top: 40px; }
+
+.table div .card-container div:nth-child(3) {
+  top: 70px; }
+
+.table div .card-container div:nth-child(4) {
+  top: 100px; }
+
+.table div .card-container div:nth-child(5) {
+  top: 130px; }
+
+.table div .card-container div:nth-child(6) {
+  top: 160px; }
+
+.table div .card-container div:nth-child(7) {
+  top: 190px; }
+
+.table div .card-container div:nth-child(8) {
+  top: 220px; }
+
+.table div .card-container div:nth-child(9) {
+  top: 250px; }
+
+.table div .card-container div:nth-child(10) {
+  top: 280px; }
+
+.table div .card-container div:nth-child(11) {
+  top: 310px; }
+
+.table div .card-container div:nth-child(12) {
+  top: 340px; }
+
+.table div .card-container div:nth-child(13) {
+  top: 370px; }
 
 .fade-enter {
   transform: rotateY(90deg); }
@@ -183,8 +200,9 @@ button:hover {
   align-items: center;
   top: 200px;
   left: 300px; }
-  .get-started * {
-    color: ghostwhite; }
+
+.get-started * {
+  color: ghostwhite; }
 
 .game-over {
   opacity: 0;
@@ -201,20 +219,23 @@ button:hover {
   top: 700px;
   left: 300px;
   z-index: 10; }
-  .game-over * {
-    color: ghostwhite; }
+
+.game-over * {
+  color: ghostwhite; }
 
 .Card {
   position: absolute;
   transition: transform 500ms ease-out, opacity 500ms ease-in; }
-  .Card .highlight {
-    height: 200px;
-    backface-visibility: hidden;
-    border: 5px solid #15ff00;
-    border-radius: 10px; }
-  .Card img {
-    height: 200px;
-    backface-visibility: hidden; }
+
+.Card .highlight {
+  height: 200px;
+  backface-visibility: hidden;
+  border: 5px solid #15ff00;
+  border-radius: 10px; }
+
+.Card img {
+  height: 200px;
+  backface-visibility: hidden; }
 
 .Card:hover {
   transform: translateX(50px);
