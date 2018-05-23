@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
-import LogoSvg from './images/LogoSvg';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 class App extends Component {
@@ -79,7 +78,7 @@ class App extends Component {
       }else{
         console.log('Done')
       }
-    }, 1000);
+    }, 1500);
   }
 
   reset(){
@@ -140,7 +139,7 @@ class App extends Component {
               <button onClick={()=>this.start()}>Start</button>
               <button onClick={()=>this.reset()}>Reset</button>
             </div>
-            {/* <button onClick={()=>this.drawTwo()}>drawtwo</button> */}
+            <button onClick={()=>this.drawTwo()}>drawtwo</button>
             <img className='deck' src='/images/CardBack.png' alt='deck'/>
             <h3>Cards Drawn:{this.state.cardsDrawn}</h3>
           </div>

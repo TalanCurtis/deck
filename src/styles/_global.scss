@@ -30,7 +30,7 @@ body {
         flex-direction: column;
         align-items: center;
         .logo{
-            background-image: linear-gradient(left, #c72200 0%,#ea2803 20%,#ea2803 20%,#ff6600 26%,#ea2803 34%,#ea2803 34%,#ea2803 58%,#ff6600 73%,#c72200 100%);
+            background-image: linear-gradient(to left, #c72200 0%,#ea2803 20%,#ea2803 20%,#ff6600 26%,#ea2803 34%,#ea2803 34%,#ea2803 58%,#ff6600 73%,#c72200 100%);
             mask-image: url('/images/Logo.svg');
             height: 200px;
             width: 200px;
