@@ -1,6 +1,6 @@
 .Card{
     position: absolute;
-    transition: transform 500ms ease-out;
+    transition: transform 500ms ease-out, opacity 500ms ease-in;;
     img{
         height: 200px;
         backface-visibility: hidden; 

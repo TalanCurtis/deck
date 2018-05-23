@@ -12,13 +12,14 @@ body {
 }
 
 .table {
+    overflow: hidden;
     width: 900px;
     height: 600px;
     background-color: #458f2f;
     border-radius: 10px;
     margin: 20px;
     display: grid;
-    grid-template-columns: repeat(5, 160px);
+    grid-template-columns: 200px repeat(4, 160px);
     grid-gap: 10px;
     justify-content: center;
     text-align: center;
@@ -28,7 +29,16 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        .logo{
+            background-image: linear-gradient(left, #c72200 0%,#ea2803 20%,#ea2803 20%,#ff6600 26%,#ea2803 34%,#ea2803 34%,#ea2803 58%,#ff6600 73%,#c72200 100%);
+            mask-image: url('/images/Logo.svg');
+            height: 200px;
+            width: 200px;
+            animation-name: scroll;
+            animation-timing-function: linear;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
         img {
             height: 220px;
         }
@@ -57,22 +67,24 @@ body {
 
 //// Group Transition
 .fade-enter {
-    opacity: 0.01;
+    // opacity: 0.01;
     transform: rotateY(90deg);
 }
 
 .fade-enter-active {
-    opacity: 1;
+    // opacity: 1;
     transform: rotateY(0deg);
 }
 
 .fade-exit {
-    opacity: 1;
+    // opacity: 1;
+    transform: translateX(0px)
 }
 
 .fade-exit-active {
-    opacity: 0.01;
-    transition: opacity 500ms ease-in;
+    // opacity: 0.01;
+    transform: translateX(1000px)    
+    // transition: opacity 500ms ease-in;
 }
 
 //// Headers
@@ -81,6 +93,12 @@ h2 {
     font-size: 2em;
     color: #050505;
     text-shadow: 1px 1px 1px rgb(7, 68, 7); 
+}
+h3 {
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #050505;
+    // text-shadow: 1px 1px 1px rgb(7, 68, 7); 
 }
 
 .red{
@@ -95,7 +113,7 @@ button {
     border-radius: 2px;
     border: none;
     background-color: rgb(37, 177, 37);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.24);
+    box-shadow: 0 2px 2px 0 rgb(0, 0, 0);
     transition: box-shadow 200ms ease-in-out, background-color 200ms ease-in-out;
 }
 
@@ -103,4 +121,10 @@ button:hover {
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
     background-color: rgb(71, 223, 71);
     
+}
+
+// logo animation
+@keyframes scroll {
+    from {background-position-x: 0px;}
+    to {background-position-x: 200px;}
 }

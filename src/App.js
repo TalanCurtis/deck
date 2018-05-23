@@ -134,14 +134,15 @@ class App extends Component {
       <div className="App">
         <div className='table'>
           <div className='controls'>
-            <LogoSvg height='150px' width='150px'/>
+            <div className='logo'>
+            </div>
             <div className='buttons'>
               <button onClick={()=>this.start()}>Start</button>
               <button onClick={()=>this.reset()}>Reset</button>
             </div>
             {/* <button onClick={()=>this.drawTwo()}>drawtwo</button> */}
             <img className='deck' src='/images/CardBack.png' alt='deck'/>
-            <h2>Cards Drawn:{this.state.cardsDrawn}</h2>
+            <h3>Cards Drawn:{this.state.cardsDrawn}</h3>
           </div>
           <div>
             <h2 className='red'>Hearts</h2>
