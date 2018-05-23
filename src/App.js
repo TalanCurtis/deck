@@ -168,7 +168,7 @@ class App extends Component {
           </div>
           <div className='game-over'>
             <h1>Hazza!</h1>
-            <h2> You found the four Queens Doom! You shall be knighted.</h2>
+            <h2> You found the four Queens of Doom! You shall be knighted.</h2>
           </div>
           <div className='controls'>
             <div className='logo'>

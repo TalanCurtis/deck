@@ -12,6 +12,7 @@ body {
 }
 
 .table {
+    position: relative;
     overflow: hidden;
     width: 900px;
     height: 600px;
@@ -137,21 +138,21 @@ button:hover {
 }
 
 .LineSvg{
-    position: fixed;
-    top: 55px;
-    left: 425px;
+    position: absolute;
+    top: 36px;
+    left: 270px;
     opacity: .5;
 }
 
 .get-started{
-    position: fixed;
+    position: absolute;
     width: 500px;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     top: 200px;
-    left: 400px;
+    left: 300px;
     *{
         color: ghostwhite;
     }
@@ -159,7 +160,7 @@ button:hover {
 
 .game-over{
     opacity: 0;
-    position: fixed;
+    position: absolute;
     background-color: rgba(1, 170, 1, 0.801);
     border-radius: 10px;
     border: 5px solid rgb(19, 218, 19);
@@ -170,7 +171,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     top: 700px;
-    left: 400px;
+    left: 300px;
     z-index: 10;
     *{
         color: ghostwhite;
