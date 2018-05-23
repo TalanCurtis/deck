@@ -1,7 +1,12 @@
 .Card{
     position: absolute;
+    transition: transform 500ms ease-out;
     img{
         height: 200px;
         backface-visibility: hidden; 
     }
+}
+.Card:hover{
+    transform: translateX(50px);
+    z-index: 10;
 }

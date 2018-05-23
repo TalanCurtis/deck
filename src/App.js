@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
+import LogoSvg from './images/LogoSvg';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 class App extends Component {
@@ -13,9 +14,11 @@ class App extends Component {
       hearts:[],
       clubs:[],
       diamonds:[],
-      queensFound:0
+      queensFound:0, 
+      cardsDrawn:0
     }
   }
+
   componentDidMount(){
     // On mount get deck id.
     axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(res=>{
@@ -23,42 +26,40 @@ class App extends Component {
     })
   }
 
-
-
   drawTwo(){
     axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=2`).then(res=>{
       // Destructure this.state 
-      let {clubs,  spades,  hearts, diamonds, queensFound} = this.state
+      let {clubs,  spades,  hearts, diamonds, queensFound, cardsDrawn} = this.state
       for (let i in res.data.cards){
         console.log(res.data.cards)
         // for each card drawn check the suit and if its a queen, sort into corresponding list and increment queensFound.
         switch (res.data.cards[i].suit) {
           case "CLUBS": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({clubs: [...clubs, res.data.cards[i]], queensFound: queensFound +=1 })
+            this.setState({clubs: [...clubs, res.data.cards[i]], queensFound: queensFound +=1, cardsDrawn: cardsDrawn + 2 })
           }else{
-            this.setState({clubs: [...clubs, res.data.cards[i]]})
+            this.setState({clubs: [...clubs, res.data.cards[i]], cardsDrawn: cardsDrawn + 2})
           }
             break;
           case "DIAMONDS": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({diamonds: [...diamonds, res.data.cards[i]], queensFound: queensFound +=1 })
+            this.setState({diamonds: [...diamonds, res.data.cards[i]], queensFound: queensFound +=1 , cardsDrawn: cardsDrawn + 2})
           }else{
-            this.setState({diamonds: [...diamonds, res.data.cards[i]]})
+            this.setState({diamonds: [...diamonds, res.data.cards[i]], cardsDrawn: cardsDrawn + 2})
           }
             break;
           case "SPADES": 
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({spades: [...spades, res.data.cards[i]], queensFound: queensFound +=1 })
+            this.setState({spades: [...spades, res.data.cards[i]], queensFound: queensFound +=1 , cardsDrawn: cardsDrawn + 2})
           }else{
-            this.setState({spades: [...spades, res.data.cards[i]]})
+            this.setState({spades: [...spades, res.data.cards[i]], cardsDrawn: cardsDrawn + 2})
           }
             break;
           case "HEARTS":
           if(res.data.cards[i].value === "QUEEN"){
-            this.setState({hearts: [...hearts, res.data.cards[i]], queensFound: queensFound +=1 })
+            this.setState({hearts: [...hearts, res.data.cards[i]], queensFound: queensFound +=1,cardsDrawn: cardsDrawn + 2 })
           }else{
-            this.setState({hearts: [...hearts, res.data.cards[i]]})
+            this.setState({hearts: [...hearts, res.data.cards[i]], cardsDrawn: cardsDrawn + 2})
           }
             break;
           default: console.log('defaulted')
@@ -89,11 +90,10 @@ class App extends Component {
         hearts:[],
         clubs:[],
         diamonds:[],
-        queensFound:0
+        queensFound:0,
+        cardsDrawn:0
       });
   }
-
-
 
   render() {
     let hearts = this.state.hearts.map((x,i)=>(
@@ -134,12 +134,14 @@ class App extends Component {
       <div className="App">
         <div className='table'>
           <div className='controls'>
+            <LogoSvg height='150px' width='150px'/>
             <div className='buttons'>
-              <button onClick={()=>this.start()}>start</button>
-              <button onClick={()=>this.reset()}>reset</button>
+              <button onClick={()=>this.start()}>Start</button>
+              <button onClick={()=>this.reset()}>Reset</button>
             </div>
-            <button onClick={()=>this.drawTwo()}>drawtwo</button>
+            {/* <button onClick={()=>this.drawTwo()}>drawtwo</button> */}
             <img className='deck' src='/images/CardBack.png' alt='deck'/>
+            <h2>Cards Drawn:{this.state.cardsDrawn}</h2>
           </div>
           <div>
             <h2 className='red'>Hearts</h2>
