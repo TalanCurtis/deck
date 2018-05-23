@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   animation(){
+    // This is the intro animation
     let tl = new TimelineMax();
     tl.from('.logo', 1, {x:-300, ease: Back.easeOut },'+=0.5')
     .from('.buttons', 1, {x:-300, ease: Back.easeOut },'-=0.75')
@@ -39,7 +40,7 @@ class App extends Component {
 
   drawTwo(){
     axios.get(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=2`).then(res=>{
-      // Destructure this.state 
+      // Destructure this.state  
       let {clubs,  spades,  hearts, diamonds, queensFound, cardsDrawn} = this.state
       let newCardsDiamonds=[]
       let newCardsHearts=[]
@@ -95,7 +96,7 @@ class App extends Component {
   }
 
   start(){
-    // Use recursion to keep drawing cards until all queens are found.
+    // Use recursion to keep drawing cards until all queens are found. stalling for 1 second to ping the api again.
     TweenLite.to('.get-started', .5, {opacity:0})
     setTimeout(() => {
       if(this.state.queensFound<4){
@@ -177,7 +178,6 @@ class App extends Component {
               <button onClick={()=>this.start()}>Start</button>
               <button onClick={()=>this.reset()}>Reset</button>
             </div>
-            {/* <button onClick={()=>this.drawTwo()}>drawtwo</button> */}
             <img className='deck' src='/images/CardBack.png' alt='deck'/>
             <h3>Cards Drawn:{this.state.cardsDrawn}</h3>
             <h3>Queens Found:{this.state.queensFound}</h3>
