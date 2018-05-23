@@ -3,7 +3,7 @@ import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import {TimelineMax, Back} from 'gsap';
+import {TweenLite, TimelineMax, Back, Bounce} from 'gsap';
 import LineSvg from './images/LineSvg';
 
 class App extends Component {
@@ -30,13 +30,11 @@ class App extends Component {
 
   animation(){
     let tl = new TimelineMax();
-    // tl.set('.logo', {x:0})/
     tl.from('.logo', 1, {x:-300, ease: Back.easeOut },'+=0.5')
     .from('.buttons', 1, {x:-300, ease: Back.easeOut },'-=0.75')
     .from('.deck',  1, {x:-300, ease: Back.easeOut },'-=0.75')
     .from('h2, h3', 1, {opacity:0})
     .from('#line', 1, {width:'0px'},'-=0.75')
-    
   }
 
   drawTwo(){
@@ -98,6 +96,7 @@ class App extends Component {
 
   start(){
     // Use recursion to keep drawing cards until all queens are found.
+    TweenLite.to('.get-started', .5, {opacity:0})
     setTimeout(() => {
       if(this.state.queensFound<4){
         console.log('draw again')
@@ -105,6 +104,9 @@ class App extends Component {
         return this.start();
       }else{
         console.log('Done')
+        let tl = new TimelineMax();
+        tl.to('.game-over', 1, {top:'200px', opacity:1, ease:Bounce.easeOut})
+        tl.to('.game-over', 1, {top:'600px', opacity:0, },'+=3')
       }
     }, 1000);
   }
@@ -161,6 +163,13 @@ class App extends Component {
       <div className="App">
         <div className='table'>
           <LineSvg className='LineSvg' height='12px' width='600px'/>
+          <div className='get-started'>
+            <h2> Press "Start" to begin the hunt for the four queens!</h2>
+          </div>
+          <div className='game-over'>
+            <h1>Hazza!</h1>
+            <h2> You found the four Queens Doom! You shall be knighted.</h2>
+          </div>
           <div className='controls'>
             <div className='logo'>
             </div>
@@ -171,6 +180,7 @@ class App extends Component {
             {/* <button onClick={()=>this.drawTwo()}>drawtwo</button> */}
             <img className='deck' src='/images/CardBack.png' alt='deck'/>
             <h3>Cards Drawn:{this.state.cardsDrawn}</h3>
+            <h3>Queens Found:{this.state.queensFound}</h3>
           </div>
           <div>
             <h2 className='red'>Hearts</h2>

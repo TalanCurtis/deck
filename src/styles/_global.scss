@@ -41,6 +41,7 @@ body {
         }
         img {
             height: 220px;
+            margin-bottom: 10px;
         }
     }
     div{
@@ -88,6 +89,12 @@ body {
 }
 
 //// Headers
+h1 {
+    font-weight: 600;
+    font-size: 2.5em;
+    color: #050505;
+    text-shadow: 1px 1px 1px rgb(7, 68, 7); 
+}
 h2 {
     font-weight: 600;
     font-size: 2em;
@@ -132,6 +139,40 @@ button:hover {
 .LineSvg{
     position: fixed;
     top: 55px;
-    left: 390px;
+    left: 425px;
     opacity: .5;
+}
+
+.get-started{
+    position: fixed;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 200px;
+    left: 400px;
+    *{
+        color: ghostwhite;
+    }
+}
+
+.game-over{
+    opacity: 0;
+    position: fixed;
+    background-color: rgba(1, 170, 1, 0.801);
+    border-radius: 10px;
+    border: 5px solid rgb(19, 218, 19);
+    width: 500px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 700px;
+    left: 400px;
+    z-index: 10;
+    *{
+        color: ghostwhite;
+    }
 }
