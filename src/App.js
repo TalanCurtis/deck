@@ -3,6 +3,8 @@ import './styles/main.css';
 import axios from 'axios';
 import Card from './components/Card/Card';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import {TimelineMax, Back} from 'gsap';
+import LineSvg from './images/LineSvg';
 
 class App extends Component {
   constructor(){
@@ -22,7 +24,19 @@ class App extends Component {
     // On mount get deck id.
     axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then(res=>{
       this.setState({deckId:res.data.deck_id})
+      this.animation()
     })
+  }
+
+  animation(){
+    let tl = new TimelineMax();
+    // tl.set('.logo', {x:0})/
+    tl.from('.logo', 1, {x:-300, ease: Back.easeOut },'+=0.5')
+    .from('.buttons', 1, {x:-300, ease: Back.easeOut },'-=0.75')
+    .from('.deck',  1, {x:-300, ease: Back.easeOut },'-=0.75')
+    .from('h2, h3', 1, {opacity:0})
+    .from('#line', 1, {width:'0px'},'-=0.75')
+    
   }
 
   drawTwo(){
@@ -146,6 +160,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className='table'>
+          <LineSvg className='LineSvg' height='12px' width='600px'/>
           <div className='controls'>
             <div className='logo'>
             </div>
